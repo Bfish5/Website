@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Finesse Web Solutions | Client-Getting Websites for Small Businesses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #050509;
+      --bg-card: #11111a;
+      --bg-soft: #181824;
+      --accent: #f0a93a;
+      --accent-soft: rgba(240, 169, 58, 0.12);
+      --text-main: #f7f7f8;
+      --text-muted: #a3a3b0;
+      --border-subtle: #262636;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #181824 0, #050509 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 26px 16px 50px;
+    }
+
+    /* NAVBAR */
+    header {
+      margin-bottom: 26px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      border-bottom-color: var(--accent);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+      padding: 24px 20px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(240, 169, 58, 0.12), rgba(5, 5, 9, 0.9));
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 24px;
+    }
+
+    .hero-kicker {
+      font-size: 0.85rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw + 1.1rem, 2.8rem);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 18px;
+      max-width: 32rem;
+    }
+
+    .hero-bullets {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .hero-bullets li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #140f08;
+      font-size: 0.94rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: #f4b85b;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-ghost {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.4);
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image-tag {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(5, 5, 9, 0.86);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* SECTIONS */
+    section {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.7));
+      border: 1px solid var(--border-subtle);
+      padding: 22px 18px 20px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 20px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+
+    .section-header h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+    }
+
+    .section-body {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .problem-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .problem-list li::before {
+      content: "— ";
+      color: var(--accent);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 12px 12px 11px;
+      font-size: 0.9rem;
+    }
+
+    .card-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .offer-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .price-tag {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 6px 0 4px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--accent-soft);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+
+    .offer-list {
+      list-style: none;
+      margin-top: 8px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .offer-list li::before {
+      content: "✔ ";
+      color: var(--accent);
+    }
+
+    .mini-steps {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+
+    .mini-steps li span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    footer {
+      max-width: 1080px;
+      margin: 16px auto 0;
+      padding: 0 16px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-image {
+        order: -1;
+      }
+      .problem-grid,
+      .offer-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <nav class="nav">
+        <div class="brand">
+          <div class="brand-mark">FW</div>
+          <span>Finesse Web Solutions</span>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="process.html">How It Works</a>
+          <a href="faq.html">FAQ &amp; About</a>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <div class="hero-kicker">Websites That Win You Clients</div>
+
+          <h1 class="hero-title">
+            Turn Your Website Into a Client-Getting Machine.
+          </h1>
+
+          <p class="hero-subtitle">
+            We build clean, modern 3-page websites for small businesses across the U.S.,
+            designed to increase clients, boost your online presence, and make you look more professional —
+            for a simple one-time <strong>$1,000</strong> with <strong>free hosting forever</strong>.
+          </p>
+
+          <ul class="hero-bullets">
+            <li>Built for small businesses like plumbers, barbers, contractors &amp; local shops</li>
+            <li>Fast turnaround — your website ready in <strong>1–2 days</strong></li>
+            <li>Free hosting forever — no monthly hosting fees</li>
+          </ul>
+
+          <div class="hero-cta-row">
+            <a href="tel:4437972249" class="btn-primary">Call 443-797-2249</a>
+            <span class="hero-note">Quick 5–10 minute call to see if we’re a fit.</span>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <!-- HERO IMAGE PLACEHOLDER -->
+          <!-- Replace with a clean laptop + small business photo or a mockup of a website -->
+          <img
+            src="https://via.placeholder.com/520x360?text=Hero+Website+Mockup"
+            alt="Mockup of a modern small business website on a laptop"
+          />
+          <div class="hero-image-tag">3-Page Sites • Small Businesses</div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section>
+        <div class="section-header">
+          <h2>The Real Problem</h2>
+          <span class="section-label">Why You’re Losing Clients</span>
+        </div>
+        <div class="section-body problem-grid">
+          <div>
+            <p>
+              Most small businesses are missing out on new customers because people can’t
+              find them online — or the website they do have makes them look outdated.
+            </p>
+            <ul class="problem-list">
+              <li><strong>No online presence:</strong> no website at all.</li>
+              <li><strong>Outdated design:</strong> old, cluttered, or confusing layout.</li>
+              <li><strong>Broken site:</strong> pages don’t work, buttons don’t click, contact doesn’t send.</li>
+            </ul>
+            <p style="margin-top:8px;">
+              Meanwhile, competitors with simple, clean websites are getting the calls, texts, and bookings
+              that should be coming to you.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">What You Actually Need</div>
+            <p>
+              Not a huge complicated site. Just a modern, working, professional 3-page website
+              that makes it easy for people to see what you do and contact you.
+            </p>
+            <p style="margin-top:6px;">
+              That’s exactly what we build — quickly and without the tech headache.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2>The Finesse Offer</h2>
+          <span class="section-label">Simple • Clear • Done For You</span>
+        </div>
+        <div class="section-body offer-layout">
+          <div>
+            <p>
+              We build a custom 3-page website that gives your business everything it needs
+              to show up online the right way — and start turning visitors into clients.
+            </p>
+
+            <p class="price-tag">
+              One-time investment: <strong>$1,000</strong>
+            </p>
+            <span class="pill">Free Hosting Forever</span>
+
+            <ul class="offer-list">
+              <li>Custom 3-page website built around your business</li>
+              <li>Home, Services/About, and Contact pages</li>
+              <li>Mobile-friendly and easy to use</li>
+              <li>Click-to-call and simple contact options</li>
+              <li>No monthly hosting fees, ever</li>
+            </ul>
+
+            <p style="margin-top:10px;">
+              When we say done for you, we mean it: we plan it, build it, edit it with you live,
+              and launch it — usually within <strong>1–2 days</strong>.
+            </p>
+
+            <div style="margin-top:14px;">
+              <a href="process.html" class="btn-ghost">See How It Works</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">From Call to Live Site</div>
+            <ul class="mini-steps">
+              <li><span>Step 1:</span> Call or text 443-797-2249.</li>
+              <li><span>Step 2:</span> We learn about your business and plan your site.</li>
+              <li><span>Step 3:</span> Next-day demo website.</li>
+              <li><span>Step 4:</span> Live Zoom edit session.</li>
+              <li><span>Step 5:</span> You approve the final version.</li>
+              <li><span>Step 6:</span> We launch your site within minutes.</li>
+            </ul>
+
+            <div style="margin-top:10px; font-size:0.86rem;">
+              We don’t launch your website until you like how it looks.
+            </div>
+
+            <div style="margin-top:16px;">
+              <!-- OFFER IMAGE PLACEHOLDER -->
+              <!-- Replace with a screenshot-style mockup of 3 pages side-by-side -->
+              <img
+                src="https://via.placeholder.com/420x220?text=3-Page+Website+Preview"
+                alt="Preview of 3-page website layout"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2>Ready to Stop Losing Clients Online?</h2>
+          <span class="section-label">Take the First Step</span>
+        </div>
+        <div class="section-body">
+          <p>
+            If you’re a small business owner — plumber, barber, contractor, local shop, or any
+            service business — and you don’t love your online presence, it’s time to fix it.
+          </p>
+          <p style="margin-top:6px;">
+            One clear offer. One price. A website you’re proud to send people to.
+          </p>
+
+          <div style="margin-top:14px; display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+            <a href="tel:4437972249" class="btn-primary">Call 443-797-2249</a>
+            <span class="hero-note">Call or text — we’ll handle the tech, you run the business.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div>&copy; 2025 Finesse Web Solutions.</div>
+    <div>Clean • Intriguing • Modern websites for small businesses.</div>
+  </footer>
+</body>
+</html>
