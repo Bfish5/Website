@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQ &amp; About | Finesse Web Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #050509;
+      --bg-card: #11111a;
+      --bg-soft: #181824;
+      --accent: #f0a93a;
+      --accent-soft: rgba(240, 169, 58, 0.12);
+      --text-main: #f7f7f8;
+      --text-muted: #a3a3b0;
+      --border-subtle: #262636;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #181824 0, #050509 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 26px 16px 50px;
+    }
+
+    header {
+      margin-bottom: 22px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      border-bottom-color: var(--accent);
+    }
+
+    .page-title-block {
+      padding: 18px 18px 16px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(240, 169, 58, 0.12), rgba(5, 5, 9, 0.9));
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .page-title-block h1 {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+
+    .page-kicker {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .page-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+    }
+
+    section {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.7));
+      border: 1px solid var(--border-subtle);
+      padding: 22px 18px 20px;
+      box-shadow: var(--shadow-soft);
+      margin-top: 20px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+
+    .section-header h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+    }
+
+    .section-body {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 12px 12px 11px;
+      font-size: 0.9rem;
+    }
+
+    .card-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .faq-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 10px 12px 10px;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+
+    .faq-a {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 20px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #140f08;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: #f4b85b;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-ghost {
+      padding: 8px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.4);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+    }
+
+    footer {
+      max-width: 1080px;
+      margin: 16px auto 0;
+      padding: 0 16px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <nav class="nav">
+        <div class="brand">
+          <div class="brand-mark">FW</div>
+          <span>Finesse Web Solutions</span>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="process.html">How It Works</a>
+          <a href="faq.html">FAQ &amp; About</a>
+        </div>
+      </nav>
+
+      <div class="page-title-block">
+        <div class="page-kicker">FAQ &amp; About</div>
+        <h1>Questions, Answers &amp; Who We Are</h1>
+        <p class="page-sub">
+          Learn more about how we work, what’s included, and why Finesse Web Solutions is
+          built specifically for small businesses across the U.S.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="section-header">
+          <h2>About Finesse Web Solutions</h2>
+          <span class="section-label">Why We Exist</span>
+        </div>
+        <div class="section-body about-grid">
+          <div>
+            <p>
+              Finesse Web Solutions exists for one reason: to help small businesses
+              stop losing customers because of bad or non-existent websites.
+            </p>
+            <p style="margin-top:6px;">
+              We focus on businesses like plumbers, barbers, contractors, cleaners,
+              home services, and local shops all over the U.S. — businesses that
+              are great at what they do, but don’t have the time or desire to
+              mess with web design and tech.
+            </p>
+            <p style="margin-top:6px;">
+              Our style is <strong>clean, intriguing, and modern</strong>. We keep things simple,
+              focus on clarity, and build sites that look professional without being overcomplicated.
+            </p>
+            <p style="margin-top:6px;">
+              You handle the work you’re great at. We handle the website that
+              helps bring you more of that work.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">How We Work With You</div>
+            <p>
+              We don’t disappear for weeks or bury you in jargon. Instead, we:
+            </p>
+            <ul style="margin-top:6px; list-style:none; font-size:0.9rem; display:grid; gap:4px;">
+              <li>• Talk to you like a real person, not a tech manual.</li>
+              <li>• Build a live demo by the next day.</li>
+              <li>• Edit your site with you on Zoom, in real time.</li>
+              <li>• Only launch when you’re happy with how it looks.</li>
+            </ul>
+
+            <div style="margin-top:14px;">
+              <!-- ABOUT IMAGE PLACEHOLDER -->
+              <!-- Replace with a photo or illustration of you working on a laptop, or a 'small agency' vibe -->
+              <img
+                src="https://via.placeholder.com/420x220?text=Small+Web+Studio"
+                alt="Small web design studio or person working on a laptop"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+          <span class="section-label">Straight Answers</span>
+        </div>
+        <div class="section-body">
+          <ul class="faq-list">
+            <li class="faq-item">
+              <div class="faq-q">What if I don’t have any photos or text yet?</div>
+              <div class="faq-a">
+                That’s okay. We can start with simple placeholder text and stock-style images,
+                then refine as you gather more content. The most important thing is
+                getting a professional, working website live.
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <div class="faq-q">Do I really get free hosting forever?</div>
+              <div class="faq-a">
+                Yes. You pay a one-time fee of $1,000 for the build, and hosting is included.
+                You don’t pay us a monthly hosting fee.
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <div class="faq-q">Do you help with the domain name?</div>
+              <div class="faq-a">
+                Yes. You’ll purchase your custom domain (like <em>yourbusiness.com</em>)
+                from a provider such as GoDaddy. We’ll connect that domain to your new website
+                so everything works smoothly.
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <div class="faq-q">What if I want changes after launch?</div>
+              <div class="faq-a">
+                During the Zoom session, we’ll work with you until you like how your site looks.
+                Small adjustments after launch are easy — just reach out and we’ll take care of it.
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <div class="faq-q">Can you build more than 3 pages?</div>
+              <div class="faq-a">
+                Yes. The base offer is a 3-page website, but we can add more pages
+                for an additional cost if your business needs them.
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <div class="faq-q">How fast can you have everything ready?</div>
+              <div class="faq-a">
+                Typically, your website is designed, edited with you, and launched
+                within <strong>1–2 days</strong> of the first call.
+              </div>
+            </li>
+
+            <li class="faq-item">
+              <div class="faq-q">How do I get started?</div>
+              <div class="faq-a">
+                Simply call or text <strong>443-797-2249</strong>.
+                We’ll schedule a quick intro call, plan your site, and set up your next-day demo.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2>Final Step: Get Your Website Handled</h2>
+          <span class="section-label">One Call Away</span>
+        </div>
+        <div class="section-body">
+          <p>
+            If you’re tired of having no website, an outdated site, or a site that just doesn’t work,
+            Finesse Web Solutions is here to fix that quickly.
+          </p>
+          <p style="margin-top:6px;">
+            For <strong>$1,000</strong>, you get a clean, modern 3-page website,
+            <strong>free hosting forever</strong>, and a simple process built for real small businesses.
+          </p>
+
+          <div style="margin-top:14px; display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+            <a href="tel:4437972249" class="btn-primary">Call 443-797-2249</a>
+            <span style="font-size:0.86rem; color:var(--text-muted);">
+              Call or text to schedule your 5–10 minute intro call.
+            </span>
+            <a href="index.html" class="btn-ghost">Back to Home</a>
+          </div>
+
+          <div style="margin-top:16px;">
+            <!-- CTA IMAGE PLACEHOLDER -->
+            <!-- Replace with a 'phone on desk' or 'business owner on call' photo -->
+            <img
+              src="https://via.placeholder.com/900x220?text=Small+Business+Owner+On+Call"
+              alt="Small business owner on the phone discussing their website"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div>&copy; 2025 Finesse Web Solutions.</div>
+    <div>Clean • Intriguing • Modern websites for small businesses.</div>
+  </footer>
+</body>
+</html>
